@@ -2,9 +2,13 @@ package task3;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import task1.ArrayValidator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Unit test for {@link SentenceValidator}
+ */
 class SentenceValidatorTest {
 
     @Test

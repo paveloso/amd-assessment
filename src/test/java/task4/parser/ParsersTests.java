@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+/**
+ * Unit test for parser package classes
+ */
 public class ParsersTests {
 
     @Test

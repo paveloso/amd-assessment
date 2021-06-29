@@ -2,10 +2,13 @@ package task4.http;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import task1.ArrayValidator;
 
-import java.net.URISyntaxException;
 import java.net.http.HttpResponse;
 
+/**
+ * Unit test for http package classes
+ */
 public class HttpMakersTests {
 
     private HttpRequestMaker requestMaker = new HttpRequestMakerImpl();

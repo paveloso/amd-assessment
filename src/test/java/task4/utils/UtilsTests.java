@@ -3,6 +3,9 @@ package task4.utils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Unit test for utils package classes
+ */
 public class UtilsTests {
 
     @Test

@@ -1,7 +1,5 @@
 package task4.scheduler;
 
-import task4.http.HttpRequestMaker;
-import task4.http.HttpRequestMakerImpl;
 import task4.routee.RouteeSmsSenderImpl;
 import task4.routee.SmsSender;
 import task4.weather.OpenWeatherCheckerImpl;
@@ -9,6 +7,9 @@ import task4.weather.WeatherChecker;
 
 import java.util.TimerTask;
 
+/**
+ * class represents Task which is responsible to check the weather data and notify a user about it result
+ */
 public class WeatherCheckerTask extends TimerTask {
 
     private final double TEMP_LIMIT = 20.0;
@@ -18,14 +19,16 @@ public class WeatherCheckerTask extends TimerTask {
     private WeatherChecker weatherChecker = new OpenWeatherCheckerImpl();
     private SmsSender smsSender = new RouteeSmsSenderImpl();
 
+    /**
+     * method comparing the temperature value from weather channel with limit and send a sms to user
+     */
     @Override
     public void run() {
         Double currentTemp = weatherChecker.getTemperature();
-//        if (TEMP_LIMIT > currentTemp) {
-//            smsSender.sendSms(MESSAGE_TEMP_LESS + currentTemp);
-//        } else {
-//            smsSender.sendSms(MESSAGE_TEMP_MORE + currentTemp);
-//        }
-        System.out.println(currentTemp);
+        if (TEMP_LIMIT > currentTemp) {
+            smsSender.sendSms(MESSAGE_TEMP_LESS + currentTemp);
+        } else {
+            smsSender.sendSms(MESSAGE_TEMP_MORE + currentTemp);
+        }
     }
 }

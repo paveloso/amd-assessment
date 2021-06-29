@@ -4,8 +4,9 @@ import task4.http.HttpRequestMaker;
 import task4.http.HttpRequestMakerImpl;
 import task4.utils.RouteeMessageBuilder;
 
-import java.net.http.HttpResponse;
-
+/**
+ * implements SmsSender interface for Routee service to simplify sms sending
+ */
 public class RouteeSmsSenderImpl implements SmsSender {
 
     private static final String APPLICATION_SMS_URL = "https://connect.routee.net/sms";
@@ -16,6 +17,11 @@ public class RouteeSmsSenderImpl implements SmsSender {
     private RouteeAuthenticatorImpl routeeAuthenticator = new RouteeAuthenticatorImpl();
     private RouteeMessageBuilder messageBuilder = new RouteeMessageBuilder();
 
+    /**
+     * implements logic for Routee service to send sms, the user just need to pass the message,
+     * the rest is preconfigured
+     * @param message string which needs to be passed as a sms message
+     */
     @Override
     public void sendSms(String message) {
         String authorizationHeader = "Bearer " + routeeAuthenticator.getAuthToken();

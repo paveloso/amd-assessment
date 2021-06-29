@@ -1,10 +1,12 @@
 package task4.parser;
 
-import java.text.ParseException;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * class helps to extract a temperature value from the JSON response from the weather server
+ */
 public class WeatherResponseParser implements Function<String, Double> {
 
     private final String TEMP_KEYWORD = "\"temp\":";

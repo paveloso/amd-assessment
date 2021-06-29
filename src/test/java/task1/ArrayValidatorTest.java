@@ -2,8 +2,10 @@ package task1;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import task1.ArrayValidator;
 
+/**
+ * Unit test for {@link ArrayValidator}
+ */
 public class ArrayValidatorTest {
 
     @Test

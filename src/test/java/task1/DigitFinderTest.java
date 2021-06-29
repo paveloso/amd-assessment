@@ -2,8 +2,10 @@ package task1;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import task1.DigitFinder;
 
+/**
+ * Unit test for {@link DigitFinder}
+ */
 public class DigitFinderTest {
 
     private static final String RESULT_POS = "Found";
