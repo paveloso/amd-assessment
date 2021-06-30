@@ -12,9 +12,9 @@ public class WeatherResponseParser implements Function<String, Double> {
 
     private static final Logger LOGGER = Logger.getLogger(WeatherResponseParser.class.getName());
 
-    private final String TEMP_REG_EXP = "\"temp\":\\d{1,}.\\d{0,}";
-    private final String TEMP_KEYWORD = "\"temp\":";
-    private final int TEMP_KEYWORD_LENGTH = TEMP_KEYWORD.length();
+    private static final String TEMP_REG_EXP = "\"temp\":\\d{1,}.\\d{0,}";
+    private static final String TEMP_KEYWORD = "\"temp\":";
+    private static final int TEMP_KEYWORD_LENGTH = TEMP_KEYWORD.length();
 
     @Override
     public Double apply(String s) {
