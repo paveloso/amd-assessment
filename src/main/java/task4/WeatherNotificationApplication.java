@@ -9,7 +9,7 @@ import task4.scheduler.WeatherTaskPlannerImpl;
 public class WeatherNotificationApplication {
 
     public static void main(String[] args) {
-        TaskPlanner taskPlanner = new WeatherTaskPlannerImpl();
+        TaskPlanner taskPlanner = new WeatherTaskPlannerImpl(0, 10, 10);
         taskPlanner.planAndExecute();
     }
 }

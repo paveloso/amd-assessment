@@ -28,10 +28,8 @@ public class HttpRequestMakerImpl implements HttpRequestMaker {
             HttpRequest request = HttpRequest.newBuilder(new URI(url))
                     .GET()
                     .build();
-            response = HttpClient.newBuilder()
-                    .build()
-                    .send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (URISyntaxException | IOException | InterruptedException ex) {
+            response = getResponse(request);
+        } catch (URISyntaxException ex) {
             LOGGER.severe("Building request failed. Check your parameters.");
         }
 
@@ -56,12 +54,27 @@ public class HttpRequestMakerImpl implements HttpRequestMaker {
                     .header("content-type", contentTypeHeader)
                     .POST(HttpRequest.BodyPublishers.ofString(body))
                     .build();
+            response = getResponse(request);
+        } catch (URISyntaxException ex) {
+            LOGGER.severe("Building request failed. Check your parameters.");
+        }
+        return response;
+    }
 
+    /**
+     * method acquires response from the provided request
+     *
+     * @param request built request with parameters needed to be sent
+     * @return HttpResponse from the provided request
+     */
+    private HttpResponse<String> getResponse(HttpRequest request) {
+        HttpResponse<String> response = null;
+        try {
             response = HttpClient.newBuilder()
                     .build()
                     .send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (URISyntaxException | IOException | InterruptedException ex) {
-            LOGGER.severe("Building request failed. Check your parameters.");
+        } catch (IOException | InterruptedException ex) {
+            LOGGER.severe("Building response failed. Check your parameters.");
         }
         return response;
     }

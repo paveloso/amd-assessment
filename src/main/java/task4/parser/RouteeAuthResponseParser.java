@@ -17,10 +17,8 @@ public class RouteeAuthResponseParser implements Function<String, String> {
         Pattern pattern = Pattern.compile(ACCESS_TOKEN_REG_EXP);
         Matcher matcher = pattern.matcher(s);
 
-        String token = "";
-        if (matcher.find()) {
-            token = s.substring(matcher.start() + TOKEN_KEYWORD_LENGTH, matcher.end());
-        }
-        return token.replace("\"", "");
+        return matcher.find()
+                ? s.substring(matcher.start() + TOKEN_KEYWORD_LENGTH, matcher.end()).replace("\"", "")
+                : "";
     }
 }
