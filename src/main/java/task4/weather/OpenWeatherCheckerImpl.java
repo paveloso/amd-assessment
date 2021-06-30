@@ -10,11 +10,12 @@ import task4.utils.ApiUrlBuilder;
  */
 public class OpenWeatherCheckerImpl implements WeatherChecker {
 
-    private HttpRequestMaker requestMaker = new HttpRequestMakerImpl();
-    private WeatherResponseParser parser = new WeatherResponseParser();
+    private final HttpRequestMaker requestMaker = new HttpRequestMakerImpl();
+    private final WeatherResponseParser parser = new WeatherResponseParser();
 
     /**
      * method takes HttpResponse from openweather server and parses in order to get temperature
+     *
      * @return temperature value in Double format
      */
     @Override

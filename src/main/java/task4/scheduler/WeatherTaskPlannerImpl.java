@@ -10,9 +10,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class WeatherTaskPlannerImpl implements TaskPlanner {
 
+    private final int EXECUTE_DELAY = 0;
     private final int EXECUTE_TIMES = 10;
+    private final int EXECUTE_PERIOD = 10;
 
-    private WeatherCheckerTask weatherCheckerTask = new WeatherCheckerTask();
+    private final WeatherCheckerTask weatherCheckerTask = new WeatherCheckerTask();
 
     /**
      * method configures a task to check the weather and schedule it to run 10 times with 10 minutes interval
@@ -21,11 +23,9 @@ public class WeatherTaskPlannerImpl implements TaskPlanner {
     public void planAndExecute() {
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.SECOND, EXECUTE_TIMES * 10);
-        executorService.scheduleAtFixedRate(weatherCheckerTask, 0, 10, TimeUnit.MINUTES);
-        while (Calendar.getInstance().before(calendar)) {
-
-        }
+        calendar.add(Calendar.SECOND, EXECUTE_TIMES * EXECUTE_PERIOD);
+        executorService.scheduleAtFixedRate(weatherCheckerTask, EXECUTE_DELAY, EXECUTE_PERIOD, TimeUnit.MINUTES);
+        while (Calendar.getInstance().before(calendar)) ;
         executorService.shutdown();
     }
 }

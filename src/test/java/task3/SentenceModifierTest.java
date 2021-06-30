@@ -2,9 +2,9 @@ package task3;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import task1.ArrayValidator;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Unit test for {@link SentenceModifier}
@@ -45,6 +45,7 @@ class SentenceModifierTest {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             sentenceModifier.doRemake(null);
         });
-        assertEquals("The String either is null or is empty", exception.getMessage());
+        final String expectedExceptionMessage = "The String either is null or is empty";
+        assertEquals(expectedExceptionMessage, exception.getMessage());
     }
 }

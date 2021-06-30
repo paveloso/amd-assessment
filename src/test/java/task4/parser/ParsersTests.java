@@ -3,16 +3,13 @@ package task4.parser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 /**
  * Unit test for parser package classes
  */
 public class ParsersTests {
 
     @Test
-    void openWeatherParserReturnTempWhenFoundRegex() throws InterruptedException, IOException, URISyntaxException {
+    void openWeatherParserReturnTempWhenFoundRegex() {
         String json = "{\"coord\":{\"lon\":22.9439,\"lat\":40.6403},\"weather\":[{\"id\":800,\"main\":\"Clear\",\"description\":\"clear sky\",\"icon\":\"01d\"}],\"base\":\"stations\",\"main\":{\"temp\":29.63,\"feels_like\":33.1,\"temp_min\":26.87,\"temp_max\":31.92,\"pressure\":1016,\"humidity\":65},\"visibility\":10000,\"wind\":{\"speed\":0.89,\"deg\":225,\"gust\":2.24},\"clouds\":{\"all\":0},\"dt\":1624950907,\"sys\":{\"type\":2,\"id\":2036703,\"country\":\"GR\",\"sunrise\":1624935599,\"sunset\":1624989789},\"timezone\":10800,\"id\":734077,\"name\":\"Thessaloniki\",\"cod\":200}";
         WeatherResponseParser parser = new WeatherResponseParser();
 

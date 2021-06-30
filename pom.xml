@@ -7,12 +7,17 @@
     <groupId>com.teststation</groupId>
     <artifactId>amdteltest</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <version.junit>5.5.2</version.junit>
+        <version.maven.compiler>3.8.1</version.maven.compiler>
+        <version.java>11</version.java>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.5.2</version>
+            <version>${version.junit}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -22,10 +27,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${version.maven.compiler}</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>${version.java}</source>
+                    <target>${version.java}</target>
                 </configuration>
             </plugin>
         </plugins>

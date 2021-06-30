@@ -1,6 +1,7 @@
 package task4.parser;
 
 import java.util.function.Function;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,19 +10,24 @@ import java.util.regex.Pattern;
  */
 public class WeatherResponseParser implements Function<String, Double> {
 
+    private static final Logger LOGGER = Logger.getLogger(WeatherResponseParser.class.getName());
+
+    private final String TEMP_REG_EXP = "\"temp\":\\d{1,}.\\d{0,}";
     private final String TEMP_KEYWORD = "\"temp\":";
+    private final int TEMP_KEYWORD_LENGTH = TEMP_KEYWORD.length();
 
     @Override
     public Double apply(String s) {
-        String regex = "\"temp\":\\d{1,}.\\d{0,}";
-        Pattern pattern = Pattern.compile(regex);
+        Pattern pattern = Pattern.compile(TEMP_REG_EXP);
         Matcher matcher = pattern.matcher(s);
 
-        Double tempValue = null;
+        double tempValue = 0d;
         if (matcher.find()) {
-            tempValue = Double.parseDouble(s.substring(matcher.start() + TEMP_KEYWORD.length(), matcher.end()));
-        } else {
-            tempValue = 0d;
+            try {
+                tempValue = Double.parseDouble(s.substring(matcher.start() + TEMP_KEYWORD_LENGTH, matcher.end()));
+            } catch (NumberFormatException ex) {
+                LOGGER.severe("Invalid temperature value received for parsing");
+            }
         }
 
         return tempValue;

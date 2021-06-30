@@ -7,27 +7,25 @@ import java.util.List;
  * SentenceModifier class contains login which makes adjustments to the String
  */
 public class SentenceModifier {
-    private static String APPEND_VOWEL = "way";
-    private static String APPEND_CONS = "ay";
-    private List<Character> vowelsList = Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U');
+    private static final String APPEND_VOWEL = "way";
+    private static final String APPEND_CONS = "ay";
+    private static final String ERROR_MESSAGE = "The String either is null or is empty";
+    private final List<Character> vowelsList = Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U');
 
     /**
      * method makes modification to the incoming string
+     *
      * @param sentence is a String to be modified
      * @return modified string
      */
     public String doRemake(String sentence) {
-
         if (!SentenceValidator.isValid(sentence)) {
-            throw new IllegalArgumentException("The String either is null or is empty");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
-
         String[] words = sentence.split(" ");
-
         for (int i = 0; i < words.length; i++) {
             words[i] = modify(words[i]);
         }
-
         return String.join(" ", words);
     }
 
@@ -35,6 +33,7 @@ public class SentenceModifier {
      * method takes a single word and makes adjustments based on certain logic:
      * if word starts with vowel, then it adds 'way' to the end of it,
      * if word starts with not vowel, then it puts first letter to the end and adds 'ay'
+     *
      * @param word is a String which will be modified
      * @return the result of a modification made on word
      */

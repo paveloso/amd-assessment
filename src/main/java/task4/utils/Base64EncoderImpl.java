@@ -9,6 +9,7 @@ public class Base64EncoderImpl implements Encoder {
 
     /**
      * method encodes a string into base64 format
+     *
      * @param input to be encode to base64 format
      * @return String in base64 format
      */

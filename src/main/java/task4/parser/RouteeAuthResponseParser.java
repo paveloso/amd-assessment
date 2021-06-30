@@ -8,20 +8,18 @@ import java.util.regex.Pattern;
  * class contains single method which help to extract and return an access_token from the JSON server response
  */
 public class RouteeAuthResponseParser implements Function<String, String> {
-
+    private final String ACCESS_TOKEN_REG_EXP = "\"access_token\":\"[A-Za-z0-9-]{1,}\"";
     private final String TOKEN_KEYWORD = "\"access_token\":";
+    private final int TOKEN_KEYWORD_LENGTH = TOKEN_KEYWORD.length();
 
     @Override
     public String apply(String s) {
-        String regex = "\"access_token\":\"[A-Za-z0-9-]{1,}\"";
-        Pattern pattern = Pattern.compile(regex);
+        Pattern pattern = Pattern.compile(ACCESS_TOKEN_REG_EXP);
         Matcher matcher = pattern.matcher(s);
 
-        String token = null;
+        String token = "";
         if (matcher.find()) {
-            token = s.substring(matcher.start() + TOKEN_KEYWORD.length(), matcher.end());
-        } else {
-            token = "";
+            token = s.substring(matcher.start() + TOKEN_KEYWORD_LENGTH, matcher.end());
         }
         return token.replace("\"", "");
     }

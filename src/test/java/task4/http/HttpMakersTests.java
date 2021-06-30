@@ -2,7 +2,6 @@ package task4.http;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import task1.ArrayValidator;
 
 import java.net.http.HttpResponse;
 
@@ -15,13 +14,17 @@ public class HttpMakersTests {
 
     @Test
     void getRequestReturnsNotNull() {
-        HttpResponse<String> response = requestMaker.sendGetRequest("https://www.google.com");
+        final String url = "https://www.google.com";
+        HttpResponse<String> response = requestMaker.sendGetRequest(url);
 
         Assertions.assertNotNull(response);
     }
 
     @Test
     void getRequestThrowsException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> requestMaker.sendGetRequest("123"));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            final String url = "123";
+            requestMaker.sendGetRequest(url);
+        });
     }
 }

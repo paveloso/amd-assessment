@@ -25,10 +25,6 @@ public class WeatherCheckerTask extends TimerTask {
     @Override
     public void run() {
         Double currentTemp = weatherChecker.getTemperature();
-        if (TEMP_LIMIT > currentTemp) {
-            smsSender.sendSms(MESSAGE_TEMP_LESS + currentTemp);
-        } else {
-            smsSender.sendSms(MESSAGE_TEMP_MORE + currentTemp);
-        }
+        smsSender.sendSms((TEMP_LIMIT > currentTemp ? MESSAGE_TEMP_LESS : MESSAGE_TEMP_MORE) + currentTemp);
     }
 }

@@ -2,9 +2,6 @@ package task2;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import task1.ArrayValidator;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test for {@link SumCalculator}

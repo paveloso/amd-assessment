@@ -7,6 +7,7 @@ public class SentenceValidator {
 
     /**
      * a method helps to validate a String if it empty or null
+     *
      * @param sentence incoming string to be validated
      * @return boolean value if the string is valid
      */
